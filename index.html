@@ -15,15 +15,12 @@
    <h1>mars weather and your weather display</h1> 
    <form id="js-submit">
     <input type="number" name="search-term" id="js-search-term" required placeholder="zip"> 
-    <input type="submit" value="Go!"> 
+    <input type="submit" value="Earth weather"> 
    </form>
-   <div class="js-image">
-
-   </div>
-   <div class="js-weather-data-mars">
-
-   </div>
-   <footer class="footer">
+   <button id="mars-weather-button" type="submit">Mars weather</button>
+   <div class="js-weather-data-mars"></div>
+   
+   <div class="group">
     <div id="earth-weather" class="earth-weather hidden">
      <!-- This is where the earth weather data is displayed -->
    </div>
@@ -31,24 +28,7 @@
    <div id="mars-weather" class="mars-weather hidden">
      <!-- This is where the mars weather data is displayed  -->
    </div>
-  </footer>
-   
-   <!-- <div class="animated-title">
-    <div class="text-top">
-      <div>
-        <span>Whats the weather like</span>
-        <span id="mars-weather"></span>
-      </div>
-    </div>
-    <div class="text-bottom">
-      <div id="earth-weather"></div>
-    </div>
-  </div> -->
-  <!-- <div>
-    <input id="clickme" type="submit" value="click here!">   
   </div>
-  <div id="earth-weather"></div>
-   -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js
 " crossorigin="anonymous"></script>
    <script src="app.js"></script>

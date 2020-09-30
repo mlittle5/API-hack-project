@@ -41,23 +41,23 @@ function getBackground() {
 }
 //// Render functions ////
 function displayMarsWeather(nasaData) {
-  let weatherData = [];
-  weatherData.push(`<h1>${nasaData[650].AT.av}</h1>`);
-  $('#mars-weather').html(weatherData);
-
+  let farenheit = Math.trunc(nasaData[650].AT.av) * 9 / 5 + 32;
+  $('#mars-weather').html(`<h1>It is ${nasaData[650].AT.av}&#8451; or ${farenheit}&#8457; on Mars</h1>`);
+  $('.mars-weather').fadeIn("slow", function() {
+    //complete
+  });
+  watchMarsButton();
 }
 function displayEarthWeather(openData) {
+  let cityZip = $('#js-search-term').val();
   let farenheit = Math.trunc(openData.main.temp) * 9 / 5 + 32;
   console.log(openData);
   //openWeatherData.push(`<p>${openData.main.temp}</p>`);
-  $('#earth-weather').html(`<h1>${Math.trunc(openData.main.temp)}&#8451; or ${farenheit}&#8457;</h1>`);
+  $('#earth-weather').html(`<h1>It is ${Math.trunc(openData.main.temp)}&#8451; or ${farenheit}&#8457; in ${cityZip}</h1>`);
   $('.earth-weather').fadeIn("slow", function() {
     //complete
   });
-  
-  
-  //$('.text-bottom').addClass("asdf");
-  //  $( "#clickme" ).click(function() {
+  watchForm();
 }
 //// Event Handlers ////
 function watchForm(openData) {
@@ -66,9 +66,15 @@ function watchForm(openData) {
     const cityZip = $('#js-search-term').val();
     getOpenWeather(cityZip);
   });
+}
+function watchMarsButton() {
+$('#mars-weather-button').click(event => {
+  event.preventDefault();
+  getMarsWeather();
+})
+}
   
   //TODO make the text appear once and then put a button underneath it? the button is what triggers the second and third round of animation
-}
 
 
 
@@ -78,7 +84,8 @@ $(function () {
   console.log('App loaded! Waiting for submit!');
   getBackground();
   watchForm();
-  getMarsWeather();
+  watchMarsButton();
+  //getMarsWeather();
 });
 
 
