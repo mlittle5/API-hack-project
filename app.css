@@ -26,6 +26,7 @@ h1 {
 body{
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100vh;
 }
 
 
@@ -42,11 +43,11 @@ body{
   color:#FFFFFF;
   text-align:center;
   transition: all 0.2s;
-  background-color:transparent;
+  background-color:#fffafa77;
   }
   .button1:hover{
   color:#000000;
-  background-color:#FFFFFF;
+  background-color:#FFFFFF99;
   }
 
 

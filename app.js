@@ -47,7 +47,7 @@ function displayMarsWeather(nasaData) {
   $('.mars-weather').fadeIn("slow", function() {
     //complete
   });
-  renderPage();
+  watchMoreInfo();
 }
 function displayEarthWeather(openData) {
   let cityZip = $('#js-search-term').val();
@@ -58,15 +58,13 @@ function displayEarthWeather(openData) {
   $('.earth-weather').fadeIn("slow", function() {
     //complete
   });
-  renderPage();
 }
-function displayMoreData(nasaData){
-  //let nasaData =
+function displayMoreData(){
   $('.more-data').html(`<div><p class="button1">This weather data is provided by the InSight: Mars Weather Service API</p>
   <br>
   <p class="button1"> To learn more, click <a target="_blank" href="https://api.nasa.gov/">here</a></p>
   </div>`);
-watchMoreInfo();
+
 }
 //// Event Handlers ////
 function watchForm(openData) {
@@ -83,9 +81,6 @@ $('#mars-weather-button').click(event => {
 })
 }
 
-function watchRefresh() {
-
-}
 
 function watchMoreInfo(){
   $('#more-info').click(event => {
@@ -105,7 +100,7 @@ function renderPage() {
   console.log('App loaded! Waiting for submit!');
   watchForm();
   watchMarsButton();
-  watchMoreInfo();
+  //watchMoreInfo();
 }
 $(getBackground);
 $(renderPage);
