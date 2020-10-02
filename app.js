@@ -42,7 +42,7 @@ function getBackground() {
 //// Render functions ////
 function displayMarsWeather(nasaData) {
   let farenheit = Math.trunc(nasaData[650].AT.av) * 9 / 5 + 32;
-  $('#mars-weather').html(`<h1>It is ${nasaData[650].AT.av}&#8451; or ${farenheit}&#8457; on Mars</h1>`);
+  $('#mars-weather').html(`<h1 class="button1">It is ${nasaData[650].AT.av}&#8451; or ${farenheit}&#8457; on Mars</h1>`);
   $('.mars-weather').slideDown("slow", function() {
     //complete
   });
@@ -53,7 +53,7 @@ function displayEarthWeather(openData) {
   let farenheit = Math.trunc(openData.main.temp) * 9 / 5 + 32;
   console.log(openData);
   //openWeatherData.push(`<p>${openData.main.temp}</p>`);
-  $('#earth-weather').html(`<h1>It is ${Math.trunc(openData.main.temp)}&#8451; or ${farenheit}&#8457; in ${cityZip}</h1>`);
+  $('#earth-weather').html(`<h1 class="button1">It is ${Math.trunc(openData.main.temp)}&#8451; or ${farenheit}&#8457; in ${cityZip}</h1>`);
   $('.earth-weather').fadeIn("slow", function() {
     //complete
   });
@@ -72,6 +72,10 @@ $('#mars-weather-button').click(event => {
   event.preventDefault();
   getMarsWeather();
 })
+}
+
+function watchRefresh() {
+
 }
   
   //TODO make the text appear once and then put a button underneath it? the button is what triggers the second and third round of animation
