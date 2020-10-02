@@ -7,6 +7,7 @@ function getMarsWeather() {
     .then(response => response.json())
     .then(nasaData => {
       displayMarsWeather(nasaData);
+      //displayMoreData(nasaData);
     })
     .catch(err => console.error(err));
 }
@@ -42,11 +43,11 @@ function getBackground() {
 //// Render functions ////
 function displayMarsWeather(nasaData) {
   let farenheit = Math.trunc(nasaData[650].AT.av) * 9 / 5 + 32;
-  $('#mars-weather').html(`<h1 class="button1">It is ${nasaData[650].AT.av}&#8451; or ${farenheit}&#8457; on Mars</h1>`);
-  $('.mars-weather').slideDown("slow", function() {
+  $('#mars-weather').html(`<h1 class="button1">It is ${nasaData[656].AT.av}&#8451; or ${farenheit}&#8457; on Mars</h1><br><button type="button" id="more-info" class="button1">More information</button>`);
+  $('.mars-weather').fadeIn("slow", function() {
     //complete
   });
-  watchMarsButton();
+  renderPage();
 }
 function displayEarthWeather(openData) {
   let cityZip = $('#js-search-term').val();
@@ -57,7 +58,15 @@ function displayEarthWeather(openData) {
   $('.earth-weather').fadeIn("slow", function() {
     //complete
   });
-  watchForm();
+  renderPage();
+}
+function displayMoreData(nasaData){
+  //let nasaData =
+  $('.more-data').html(`<div><p class="button1">This weather data is provided by the InSight: Mars Weather Service API</p>
+  <br>
+  <p class="button1"> To learn more, click <a target="_blank" href="https://api.nasa.gov/">here</a></p>
+  </div>`);
+watchMoreInfo();
 }
 //// Event Handlers ////
 function watchForm(openData) {
@@ -77,6 +86,14 @@ $('#mars-weather-button').click(event => {
 function watchRefresh() {
 
 }
+
+function watchMoreInfo(){
+  $('#more-info').click(event => {
+    console.log('logged');
+    event.preventDefault();
+    displayMoreData();
+  })
+}
   
   //TODO make the text appear once and then put a button underneath it? the button is what triggers the second and third round of animation
 
@@ -84,13 +101,14 @@ function watchRefresh() {
 
 
 
-$(function () {
+function renderPage() {
   console.log('App loaded! Waiting for submit!');
-  getBackground();
   watchForm();
   watchMarsButton();
-  //getMarsWeather();
-});
+  watchMoreInfo();
+}
+$(getBackground);
+$(renderPage);
 
 
   //TODO use some math to calculate mars days
