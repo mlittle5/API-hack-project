@@ -11,23 +11,29 @@
   <link href="app.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body>
-   <h1>mars weather and your weather display</h1> 
-   <form id="js-submit">
+<body> 
+   <!-- <form id="js-submit">
     <input type="number" name="search-term" id="js-search-term" required placeholder="zip"> 
     <input type="submit" value="Earth weather"> 
-   </form>
-   <button id="mars-weather-button" type="submit">Mars weather</button>
+   </form> -->
+   <!-- <button id="mars-weather-button" type="submit">Mars weather</button> -->
    <div class="js-weather-data-mars"></div>
    
    <div class="group">
-    <div id="earth-weather" class="earth-weather hidden">
-     <!-- This is where the earth weather data is displayed -->
-   </div>
-
-   <div id="mars-weather" class="mars-weather hidden">
+    <div id="mars-weather" class="mars-weather item">
      <!-- This is where the mars weather data is displayed  -->
+     <button id="mars-weather-button" class="button1" type="submit">Click here to get the weather on mars</button>
    </div>
+   <div id="earth-weather" class="earth-weather item">
+      <!-- This is where the earth weather data is displayed -->
+      <form id="js-submit">
+        <input type="number" name="search-term" id="js-search-term" class="button1 item" required placeholder="input zip code here">
+        <input type="submit" value="Click for the weather on Earth." class="button1 item">
+        
+       </form>
+     </div>
+
+   
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js
 " crossorigin="anonymous"></script>

@@ -43,7 +43,7 @@ function getBackground() {
 function displayMarsWeather(nasaData) {
   let farenheit = Math.trunc(nasaData[650].AT.av) * 9 / 5 + 32;
   $('#mars-weather').html(`<h1>It is ${nasaData[650].AT.av}&#8451; or ${farenheit}&#8457; on Mars</h1>`);
-  $('.mars-weather').fadeIn("slow", function() {
+  $('.mars-weather').slideDown("slow", function() {
     //complete
   });
   watchMarsButton();
