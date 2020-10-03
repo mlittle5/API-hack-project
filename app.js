@@ -44,7 +44,7 @@ function getBackground() {
 function displayMarsWeather(nasaData) {
   let farenheit = Math.trunc(nasaData[650].AT.av) * 9 / 5 + 32;
   $('#mars-weather').html(`<h1 class="button1">It is ${nasaData[656].AT.av}&#8451; or ${farenheit}&#8457; on Mars</h1><br><button type="button" id="more-info" class="button1">More information</button>`);
-  $('.mars-weather').fadeIn("slow", function() {
+  $('.mars-weather').fadeIn("slow", function () {
     //complete
   });
   watchMoreInfo();
@@ -55,11 +55,11 @@ function displayEarthWeather(openData) {
   console.log(openData);
   //openWeatherData.push(`<p>${openData.main.temp}</p>`);
   $('#earth-weather').html(`<h1 class="button1">It is ${Math.trunc(openData.main.temp)}&#8451; or ${farenheit}&#8457; in ${cityZip}</h1>`);
-  $('.earth-weather').fadeIn("slow", function() {
+  $('.earth-weather').fadeIn("slow", function () {
     //complete
   });
 }
-function displayMoreData(){
+function displayMoreData() {
   $('.more-data').html(`<div><p class="button1">This weather data is provided by the InSight: Mars Weather Service API</p>
   <br>
   <p class="button1"> To learn more, click <a target="_blank" href="https://api.nasa.gov/">here</a></p>
@@ -75,14 +75,14 @@ function watchForm(openData) {
   });
 }
 function watchMarsButton() {
-$('#mars-weather-button').click(event => {
-  event.preventDefault();
-  getMarsWeather();
-})
+  $('#mars-weather-button').click(event => {
+    event.preventDefault();
+    getMarsWeather();
+  })
 }
 
 
-function watchMoreInfo(){
+function watchMoreInfo() {
   $('#more-info').click(event => {
     console.log('logged');
     event.preventDefault();
