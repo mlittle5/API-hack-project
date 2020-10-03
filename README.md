@@ -14,5 +14,8 @@ Technology used:
 
 API's used:
 1. InSight: Mars Weather Service API from NASA
+    -gets the weather from mars
 2. Mars Rover Photos API from NASA 
+    -gets a photo from a rover
 3. Current Weather Data from Openweather
+    -get the weather based on the location of a zip code. 
