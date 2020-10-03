@@ -89,11 +89,6 @@ function watchMoreInfo(){
     displayMoreData();
   })
 }
-  
-  //TODO make the text appear once and then put a button underneath it? the button is what triggers the second and third round of animation
-
-
-
 
 
 function renderPage() {
@@ -104,6 +99,3 @@ function renderPage() {
 }
 $(getBackground);
 $(renderPage);
-
-
-  //TODO use some math to calculate mars days

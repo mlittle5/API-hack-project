@@ -11,16 +11,9 @@
   top: 0;
   padding-top: 10%;
   padding-left: 5%;
-  /* color: white; */
-  /* text-shadow: 2px 2px 4px #000000; */
 } 
 .item {
   padding-top: 5%;
-}
-
-h1 {
-  /* color: white; */
-  /* text-shadow: 2px 2px 4px #000000; */
 }
 
 body{
@@ -49,12 +42,3 @@ body{
   color:#000000;
   background-color:#FFFFFF99;
   }
-
-
-  
-  /* @media all and (max-width:30em){
-   a.button1{
-    display:block;
-    margin:0.4em auto;
-   }
-  } */
