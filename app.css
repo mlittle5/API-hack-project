@@ -1,13 +1,21 @@
 
  /* // ANIMATION CSS // */
 
-.group {
+header {
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+}
+
+.weather {
+  color: white;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+}
+ .group {
   flex-shrink: 0;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  position: fixed;
+  flex-direction: row;
   top: 0;
   padding-top: 10%;
   padding-left: 5%;
@@ -17,11 +25,11 @@
 }
 
 body{
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 100vh; */
+  background-image:url(background-image/toppng.com-starry-sky-stars-space-dark-astronomy-1600x1200.jpg);
 }
-
 
 .button1{
   display: inline-block;
@@ -36,9 +44,9 @@ body{
   color:#FFFFFF;
   text-align:center;
   transition: all 0.2s;
-  background-color:#fffafa77;
+  background-color:transparent;
   }
   .button1:hover{
   color:#000000;
-  background-color:#FFFFFF99;
+  background-color:#FFFFFF;
   }
