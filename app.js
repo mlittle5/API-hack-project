@@ -10,21 +10,21 @@ function getWeather(cityZip) {
       fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${cityZip}&appid=${openApiKey}&units=metric`)
         .then(response2 => response2.json())
         .then(openData => {
-          console.log(nasaData, openData)
+          //console.log(nasaData, openData)
           displayWeather(nasaData, openData)
         })
-        .catch(err => console.error(err));
+        .catch(err => alert("Something went wrong! try again with a valid zip code"));
     })
-    .catch(err => console.error(err));
+    .catch(err => alert("Something went wrong! try again with valid zip code"));
 }
 //// Template Functions ////
 
 function weatherTemplate(marsWeather, marsWeatherConvert, earthWeather, earthWeatherConvert, cityZip) {
-  console.log("this worked");
+  //console.log("this worked");
   return `
   <h1 class="weather">It is ${marsWeather}&#8451; or ${marsWeatherConvert}&#8457; on Mars 
   and<br>it is ${earthWeather}&#8451; or ${earthWeatherConvert}&#8457; in ${cityZip}</h1>
-  <button type="button" id="refresh" class="button1">Refresh</button>
+  <button type="button" id="refresh" class="button1 group">Refresh page</button>
   `
 }
 
@@ -48,7 +48,7 @@ function displayWeather(nasaData, openData,) {
   // if (marsWeatherConvert > 80) {
   //   $('#mars-weather').html(hotTemplate());
   // }
-
+refreshPage();
 }
 
 
@@ -84,8 +84,9 @@ function watchForm(openData) {
     event.preventDefault();
     const cityZip = $('#js-search-term').val();
     getWeather(cityZip);
+    $('.js-search-term').val("");
   });
-  $('#js-submit').reset();
+  
 }
 // function watchMarsButton() {
 //   $('#mars-weather-button').click(event => {
@@ -96,14 +97,16 @@ function watchForm(openData) {
 
 function watchMoreInfo() {
   $('#more-info').click(event => {
-    console.log('logged');
+    //console.log('logged');
     event.preventDefault();
     displayMoreData();
   })
 }
 
 function refreshPage() {
-  $('.refresh').click(e => {
+  $('#refresh').click(e => {
+    event.preventDefault();
+    console.log("this worked too");
     window.location.reload();
   })
 }
