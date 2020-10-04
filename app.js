@@ -7,7 +7,7 @@ function getWeather(cityZip) {
   fetch(`https://api.nasa.gov/insight_weather/?api_key=${nasaApiKey}&feedtype=json&ver=1.0`)
     .then(response => response.json())
     .then(nasaData => {
-      fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${cityZip}&appid=${openApiKey}&units=metric`)
+      fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${cityZip}&appid=${openApiKey}&units=imperial`)
         .then(response2 => response2.json())
         .then(openData => {
           //console.log(nasaData, openData)
@@ -19,32 +19,26 @@ function getWeather(cityZip) {
 }
 //// Template Functions ////
 
-function weatherTemplate(marsWeather, marsWeatherConvert, earthWeather, earthWeatherConvert, cityZip) {
+function weatherTemplate(marsWeather, marsWeatherConvert, earthWeather, cityZip) {
   //console.log("this worked");
   return `
   <h1 class="weather">It is ${marsWeather}&#8451; or ${marsWeatherConvert}&#8457; on Mars 
-  and<br>it is ${earthWeather}&#8451; or ${earthWeatherConvert}&#8457; in ${cityZip}</h1>
-  <button type="button" id="refresh" class="button1 group">Refresh page</button>
+  and<br>it is ${earthWeather}&#8457; in ${cityZip}</h1><br>
+  <p class="weather">That was pretty neat. want to try again?</p><br>
+<button type="button" id="refresh" class="button1 item">Refresh page</button>
   `
 }
-
-function hotTemplate() {
-  return `
-<h2> Wow, its hot on mars!</h2>
-`
-}
-function earthWeatherConvert() {
-
-}
-
 //// Render functions ////
 function displayWeather(nasaData, openData,) {
   let cityZip = $('#js-search-term').val();
   let marsWeatherConvert = Math.trunc(nasaData[657].AT.av) * 9 / 5 + 32;
-  let earthWeatherConvert = Math.trunc(openData.main.temp) * 9 / 5 + 32;
-  let marsWeather = nasaData[656].AT.av;
+  //let earthWeatherConvert = Math.trunc(openData.main.temp) * 9 / 5 + 32;
+  let marsWeather = Math.trunc(nasaData[656].AT.av);
   let earthWeather = openData.main.temp;
-  $('.mars-weather').html(weatherTemplate(marsWeatherConvert, earthWeatherConvert, marsWeather, earthWeather, cityZip));
+  console.log(earthWeather);
+  //console.log(openData.main.temp);
+  $('.mars-weather').html(weatherTemplate(marsWeatherConvert, marsWeather, earthWeather, cityZip));
+  $('.coldTemplate').html(marsWeather, earthWeather);
   // if (marsWeatherConvert > 80) {
   //   $('#mars-weather').html(hotTemplate());
   // }
@@ -88,25 +82,11 @@ function watchForm(openData) {
   });
   
 }
-// function watchMarsButton() {
-//   $('#mars-weather-button').click(event => {
-//     event.preventDefault();
-//     getMarsWeather();
-//   })
-// }
-
-function watchMoreInfo() {
-  $('#more-info').click(event => {
-    //console.log('logged');
-    event.preventDefault();
-    displayMoreData();
-  })
-}
 
 function refreshPage() {
   $('#refresh').click(e => {
     event.preventDefault();
-    console.log("this worked too");
+    //console.log("this worked too");
     window.location.reload();
   })
 }
