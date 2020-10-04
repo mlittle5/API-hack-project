@@ -24,6 +24,7 @@ function weatherTemplate(marsWeather, marsWeatherConvert, earthWeather, earthWea
   return `
   <h1 class="weather">It is ${marsWeather}&#8451; or ${marsWeatherConvert}&#8457; on Mars 
   and<br>it is ${earthWeather}&#8451; or ${earthWeatherConvert}&#8457; in ${cityZip}</h1>
+  <button type="button" id="refresh" class="button1">Refresh</button>
   `
 }
 
@@ -84,6 +85,7 @@ function watchForm(openData) {
     const cityZip = $('#js-search-term').val();
     getWeather(cityZip);
   });
+  $('#js-submit').reset();
 }
 // function watchMarsButton() {
 //   $('#mars-weather-button').click(event => {
@@ -101,14 +103,16 @@ function watchMoreInfo() {
 }
 
 function refreshPage() {
-  //TODO make a thing to refresh the page
+  $('.refresh').click(e => {
+    window.location.reload();
+  })
 }
 
 
 function renderPage() {
   //console.log('App loaded! Waiting for submit!');
   watchForm();
-  //watchMarsButton();
+  refreshPage();
   //watchMoreInfo();
 }
 
