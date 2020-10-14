@@ -10,12 +10,12 @@ function getWeather(cityZip) {
       fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${cityZip}&appid=${openApiKey}&units=imperial`)
         .then(response2 => response2.json())
         .then(openData => {
-          //console.log(nasaData, openData)
+          console.log(nasaData, openData)
           displayWeather(nasaData, openData)
         })
         .catch(err => alert("Something went wrong! try again with a valid zip code"));
     })
-    .catch(err => alert("Something went wrong! try again with valid zip code"));
+    .catch(err => alert("Something went wrong! I can't seem to connect to the Nasa api. Try again with valid zip code"));
 }
 //// Template Functions ////
 
@@ -31,9 +31,9 @@ function weatherTemplate(marsWeather, marsWeatherConvert, earthWeather, cityZip)
 //// Render functions ////
 function displayWeather(nasaData, openData,) {
   let cityZip = $('#js-search-term').val();
-  let marsWeatherConvert = Math.trunc(nasaData[657].AT.av) * 9 / 5 + 32;
+  let marsWeatherConvert = Math.trunc(nasaData[667].AT.av * 9 / 5 + 32);
   //let earthWeatherConvert = Math.trunc(openData.main.temp) * 9 / 5 + 32;
-  let marsWeather = Math.trunc(nasaData[656].AT.av);
+  let marsWeather = Math.trunc(nasaData[667].AT.av);
   let earthWeather = openData.main.temp;
   console.log(earthWeather);
   //console.log(openData.main.temp);
