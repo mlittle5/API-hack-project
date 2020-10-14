@@ -5,7 +5,7 @@
 
 https://mlittle5.github.io/API-hack-project/
 
-Format: ![picture of the app](background-images/screenshot.png)
+Format: ![picture of the app](background-image/screenshot.png)
 
 Have you ever wondered what the weather is like on mars?
 Have you ever wondered how it compares to the weather outside?
