@@ -10,7 +10,7 @@ function getWeather(cityZip) {
       fetch(`https://api.openweathermap.org/data/2.5/weather?zip=${cityZip}&appid=${openApiKey}&units=imperial`)
         .then(response2 => response2.json())
         .then(openData => {
-          console.log(nasaData, openData)
+          //console.log(nasaData, openData)
           displayWeather(nasaData, openData)
         })
         .catch(err => alert("Something went wrong! try again with a valid zip code"));
@@ -25,17 +25,19 @@ function weatherTemplate(marsWeather, marsWeatherConvert, earthWeather, cityZip)
   <h1 class="weather">It is ${marsWeather}&#8451; or ${marsWeatherConvert}&#8457; on Mars 
   and<br>it is ${earthWeather}&#8457; in ${cityZip}</h1><br>
   <p class="weather">That was pretty neat. want to try again?</p><br>
-<button type="button" id="refresh" class="button1 item">Refresh page</button>
+  <button type="button" id="refresh" class="button1 item">Refresh page</button>
   `
 }
 //// Render functions ////
 function displayWeather(nasaData, openData,) {
   let cityZip = $('#js-search-term').val();
-  let marsWeatherConvert = Math.trunc(nasaData[667].AT.av * 9 / 5 + 32);
+  let nasaCurrentDate = nasaData[Object.keys(nasaData)[Object.keys(nasaData).length - 3]];
+  //console.log(nasaCurrentDate);
+  let marsWeatherConvert = Math.trunc(nasaCurrentDate.AT.av * 9 / 5 + 32);
   //let earthWeatherConvert = Math.trunc(openData.main.temp) * 9 / 5 + 32;
-  let marsWeather = Math.trunc(nasaData[667].AT.av);
+  let marsWeather = Math.trunc(nasaCurrentDate.AT.av);
   let earthWeather = openData.main.temp;
-  console.log(earthWeather);
+  //console.log(earthWeather);
   //console.log(openData.main.temp);
   $('.mars-weather').html(weatherTemplate(marsWeatherConvert, marsWeather, earthWeather, cityZip));
 refreshPage();
